@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample</title>
+	<style>
+		html, body, div {
+			line-height: 1;
+			margin: 0;
+			padding: 0;
+		}
+		#jsi-sample {
+			margin: 10px;
+			padding: 50px 30px;
+			background: #99FF99;
+			font-family: sans-serif;
+			font-size: 40px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div id="jsi-sample">Default</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="jquery.crossover.js"></script>
+	<script>
+		$(function () {
+			var $sample = $('#jsi-sample');
+
+			$(window).crossover(function (bp) {
+				if (bp === 'max640') {
+					$sample.css('background', '#FF9999').text('MAX640');
+				} else if (bp === 'max800') {
+					$sample.css('background', '#9999FF').text('MAX800');
+				} else if (bp === 'min801') {
+					$sample.css('background', '#999999').text('MIN801');
+				} else {
+					$sample.css('background', '#99FF99').text('DEFAULT');
+				}
+			}, [
+				'min801',
+				'max800',
+				'max640'
+			]);
+		});
+	</script>
+</body>
+</html>

@@ -1,4 +1,9 @@
-(function ($) {
+/*!
+ * jquery.qtouch.js v0.9 - jQuery custom event for through the responsive breakpoint.
+ * Copyright (c) 2014 Lei Hau'oli Co.,Ltd. - https://github.com/leihauoli/jquery.crossover.js
+ * License: MIT
+ */
+;(function ($) {
 	// breakpoints: array.string | 'max??? or min???' | ? = int
 	var Crossover = function (fn, breakpoints) {
 		this.fn = fn;
@@ -18,10 +23,10 @@
 			this.generateBreakpointsFormatted();
 			this.generateMediaQueries();
 			this.judgeCrossoverToRunFn();
-			this.bindEvent();
+			this.bindEvents();
 		},
-		bindEvent: function () {
-			this.$win.on('resize', $.proxy(this.judgeCrossoverToRunFn, this));
+		bindEvents: function () {
+			this.$win.on('resize orientationchange', $.proxy(this.judgeCrossoverToRunFn, this));
 		},
 		generateBreakpointsFormatted: function () {
 			var _self = this;
